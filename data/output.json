@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "first-test-card",
+    "title": "PolySession",
+    "date": "2026-04-05",
+    "status": "published",
+    "tags": [],
+    "excerpt": "こ のデバイスは PolySession。多言語のコミュニケーション環境で人々の",
+    "hasText": true,
+    "hasImage": true,
+    "textPath": "01_OUTPUT/first-test-card/text.md",
+    "imagePath": "01_OUTPUT/first-test-card/image.jpg"
+  }
+]

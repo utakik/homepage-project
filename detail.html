@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 24px 0;
+    }
+
+    .date {
+      color: #666;
+      margin: 8px 0 16px;
+    }
+
+    .tags {
+      margin-top: 24px;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .content {
+      margin-top: 32px;
+    }
+
+    .content h1,
+    .content h2,
+    .content h3 {
+      margin-top: 1.4em;
+    }
+
+    .content p,
+    .content ul,
+    .content ol,
+    .content blockquote {
+      margin: 1em 0;
+    }
+
+    .content code {
+      background: #f3f3f3;
+      padding: 0.1em 0.3em;
+    }
+
+    .content pre {
+      background: #f3f3f3;
+      padding: 16px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p><a href="./index.html">← Back</a></p>
+    <div id="app">読み込み中...</div>
+  </div>
+
+  <script type="module">
+    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+    function getSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("slug");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    async function loadDetail() {
+      const slug = getSlug();
+      const app = document.getElementById("app");
+
+      if (!slug) {
+        app.innerHTML = "<p>slug がありません。</p>";
+        return;
+      }
+
+      const res = await fetch(`./data/output.json?t=${Date.now()}`);
+      const cards = await res.json();
+      const card = cards.find(item => item.slug === slug);
+
+      if (!card) {
+        app.innerHTML = "<p>該当カードが見つかりません。</p>";
+        return;
+      }
+
+      let textHtml = "<p>本文はありません。</p>";
+
+      if (card.hasText && card.textPath) {
+        const textRes = await fetch(`./${card.textPath}?t=${Date.now()}`);
+        const text = await textRes.text();
+        textHtml = `<div class="content">${marked.parse(text)}</div>`;
+      }
+
+      const imageHtml = card.hasImage && card.imagePath
+        ? `<img src="./${card.imagePath}" alt="${escapeHtml(card.title)}">`
+        : "";
+
+      const tagsHtml = card.tags && card.tags.length > 0
+        ? `<div class="tags">Tags: ${card.tags.map(escapeHtml).join(", ")}</div>`
+        : "";
+
+      app.innerHTML = `
+        <h1>${escapeHtml(card.title)}</h1>
+        <div class="date">${escapeHtml(card.date)}</div>
+        ${imageHtml}
+        ${textHtml}
+        ${tagsHtml}
+      `;
+
+      document.title = card.title;
+    }
+
+    loadDetail().catch(error => {
+      console.error(error);
+      document.getElementById("app").innerHTML = "<p>読み込みに失敗しました。</p>";
+    });
+  </script>
+</body>
+</html>
