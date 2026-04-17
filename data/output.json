@@ -1,5 +1,21 @@
 [
   {
+    "slug": "zine_kouzou_01",
+    "title": "構造",
+    "date": "2026-04-17",
+    "status": "published",
+    "tags": [
+      "zine",
+      "structure",
+      "publication"
+    ],
+    "excerpt": "this is my test folder",
+    "hasText": true,
+    "hasImage": true,
+    "textPath": "01_OUTPUT/zine_kouzou_01/text.md",
+    "imagePath": "01_OUTPUT/zine_kouzou_01/image.jpg"
+  },
+  {
     "slug": "first-test-card",
     "title": "PolySession",
     "date": "2026-04-05",
