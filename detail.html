@@ -90,6 +90,12 @@
         .replaceAll("'", "&#39;");
     }
 
+    function getBaseDir(path) {
+      if (!path) return "";
+      const lastSlash = path.lastIndexOf("/");
+      return lastSlash >= 0 ? path.slice(0, lastSlash + 1) : "";
+    }
+
     async function loadDetail() {
       const slug = getSlug();
       const app = document.getElementById("app");
@@ -131,6 +137,26 @@
         ${textHtml}
         ${tagsHtml}
       `;
+
+      if (card.textPath) {
+        const baseDir = getBaseDir(card.textPath);
+        app.querySelectorAll(".content img").forEach((img) => {
+          const src = img.getAttribute("src");
+          if (!src) return;
+
+          const isAbsolute =
+            src.startsWith("http://") ||
+            src.startsWith("https://") ||
+            src.startsWith("/") ||
+            src.startsWith("./") ||
+            src.startsWith("../") ||
+            src.startsWith("data:");
+
+          if (!isAbsolute) {
+            img.setAttribute("src", `./${baseDir}${src}`);
+          }
+        });
+      }
 
       document.title = card.title;
     }
