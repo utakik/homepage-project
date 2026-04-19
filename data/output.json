@@ -1,6 +1,6 @@
 [
   {
-    "slug": "note esp",
+    "slug": "note_esp",
     "title": "zine-transportation-achievement",
     "date": "2026-04-19",
     "status": "published",
@@ -8,8 +8,8 @@
     "excerpt": "noteのリンクを貼る予定 メモ 画像あり Markdown 表示確認 OneD",
     "hasText": true,
     "hasImage": true,
-    "textPath": "01_OUTPUT/note esp/text.md",
-    "imagePath": "01_OUTPUT/note esp/image.jpg"
+    "textPath": "01_OUTPUT/note_esp/text.md",
+    "imagePath": "01_OUTPUT/note_esp/image.jpg"
   },
   {
     "slug": "zine_kouzou_01",
