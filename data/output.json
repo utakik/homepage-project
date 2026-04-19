@@ -8,8 +8,8 @@
     "excerpt": "noteのリンクを貼る予定 メモ 画像あり Markdown 表示確認 OneD",
     "hasText": true,
     "hasImage": false,
-    "textPath": "01_OUTPUT/note_esp/text.md",
-    "imagePath": "01_OUTPUT/note_esp/image.jpg"
+    "textPath": "01_OUTPUT/note esp/text.md",
+    "imagePath": null
   },
   {
     "slug": "zine_kouzou_01",
