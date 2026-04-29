@@ -144,16 +144,24 @@
           const src = img.getAttribute("src");
           if (!src) return;
 
-          const isAbsolute =
+          // absolute / special URLs should remain as-is.
+          // (required by spec: http, https, data, mailto, tel, #, /)
+          const isSpecial =
             src.startsWith("http://") ||
             src.startsWith("https://") ||
-            src.startsWith("/") ||
-            src.startsWith("./") ||
-            src.startsWith("../") ||
-            src.startsWith("data:");
+            src.startsWith("data:") ||
+            src.startsWith("mailto:") ||
+            src.startsWith("tel:") ||
+            src.startsWith("#") ||
+            src.startsWith("/");
 
-          if (!isAbsolute) {
-            img.setAttribute("src", `./${baseDir}${src}`);
+          // Don't try to resolve ../ for now.
+          if (!isSpecial && src.startsWith("../")) return;
+
+          // Resolve ./page01.jpg and page01.jpg relative to the markdown folder.
+          if (!isSpecial) {
+            const normalized = src.startsWith("./") ? src.slice(2) : src;
+            img.setAttribute("src", `./${baseDir}${normalized}`);
           }
         });
       }
