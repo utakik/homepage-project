@@ -1,0 +1,23 @@
+{
+  "id": "zine_kouzou_01",
+  "title": "構造_vol_00",
+  "slug": "zine-kouzou-01",
+  "date": "2026-04-17",
+  "type": "zine",
+  "category": "publication",
+  "status": "published",
+  "featured": false,
+  "thumbnail": "image.jpg",
+  "images": [
+    "page01.jpg",
+    "page02.jpg",
+    "page03.jpg",
+    "page04.jpg",
+    "page05.jpg",
+    "page06.jpg",
+    "page07.jpg",
+    "page08.jpg"
+  ],
+  "summary": "ZINE『構造』のページ記録。",
+  "tags": ["zine", "structure", "publication"]
+}
