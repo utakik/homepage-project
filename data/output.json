@@ -12,7 +12,7 @@
     "imagePath": "01_OUTPUT/note_esp/image.jpg"
   },
   {
-    "slug": "zine_kouzou_01",
+    "slug": "zine_01",
     "title": "構造_vol_00",
     "date": "2026-04-17",
     "status": "published",
@@ -24,11 +24,11 @@
     "excerpt": "構造 vol00 ZINE『構造』のページ記録。 ページごとに異なる断片や場面を",
     "hasText": true,
     "hasImage": true,
-    "textPath": "01_OUTPUT/zine_kouzou_01/text.md",
-    "imagePath": "01_OUTPUT/zine_kouzou_01/image.jpg"
+    "textPath": "01_OUTPUT/zine_01/text.md",
+    "imagePath": "01_OUTPUT/zine_01/image.jpg"
   },
   {
-    "slug": "first-test-card",
+    "slug": "polysession",
     "title": "PolySession",
     "date": "2026-04-05",
     "status": "published",
@@ -36,7 +36,7 @@
     "excerpt": "更新した時間は 20260405 7:36 PM メモ 画像あり Markdow",
     "hasText": true,
     "hasImage": true,
-    "textPath": "01_OUTPUT/first-test-card/text.md",
-    "imagePath": "01_OUTPUT/first-test-card/image.jpg"
+    "textPath": "01_OUTPUT/polysession/text.md",
+    "imagePath": "01_OUTPUT/polysession/image.jpg"
   }
 ]
